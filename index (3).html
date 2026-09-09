@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Romaíne Santos | Data Analyst Portfolio</title>
+<meta name="description" content="Romaíne Santos, Data Analyst especializada em SQL, Power BI, Python e pipelines de dados. Dashboards ao vivo, projetos open-source e cases de BI para negócios."/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Romaíne Santos | Data Analyst Portfolio"/>
+<meta property="og:description" content="Especialista em SQL, Power BI, Python e ETL. Confira dashboards ao vivo e projetos de Business Intelligence."/>
+<meta property="og:image" content="https://www.romainesantos.sbs/hero-photo.jpg"/>
+<meta property="og:url" content="https://www.romainesantos.sbs/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Romaíne Santos | Data Analyst Portfolio"/>
+<meta name="twitter:description" content="Especialista em SQL, Power BI, Python e ETL. Confira dashboards ao vivo e projetos de Business Intelligence."/>
+<meta name="twitter:image" content="https://www.romainesantos.sbs/hero-photo.jpg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+/* ─── RESET & BASE ─────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  background:#0F172A;
+  color:#E5E7EB;
+  font-family:'Inter',sans-serif;
+  font-weight:400;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+/* ─── SCROLLBAR ─────────────────────────────────── */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:#0F172A}
+::-webkit-scrollbar-thumb{background:#2D3F5A;border-radius:10px}
+
+/* ─── CSS VARS ──────────────────────────────────── */
+:root{
+  --bg:        #0F172A;
+  --bg2:       #0B1221;
+  --card:      #1E293B;
+  --card2:     #243044;
+  --border:    rgba(59,130,246,.15);
+  --border2:   rgba(255,255,255,.06);
+  --text:      #E5E7EB;
+  --muted:     #94A3B8;
+  --subtle:    #64748B;
+  --blue:      #3B82F6;
+  --blue-glow: rgba(59,130,246,.25);
+  --purple:    #8B5CF6;
+  --purple-glow:rgba(139,92,246,.25);
+  --cyan:      #06B6D4;
+  --green:     #10B981;
+  --radius:    12px;
+  --radius-lg: 20px;
+}
+
+/* ─── NOISE OVERLAY ─────────────────────────────── */
+body::before{
+  content:'';
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:150px;
+}
+
+/* ─── NAV ───────────────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 clamp(1.5rem,5vw,3rem);
+  height:64px;
+  background:rgba(11,18,33,.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border2);
+}
+.nav-logo{
+  font-family:'Poppins',sans-serif;font-weight:700;font-size:1rem;
+  background:linear-gradient(135deg,var(--blue),var(--purple));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  letter-spacing:-.01em;
+}
+.nav-center{display:flex;gap:2rem;align-items:center}
+.nav-center a{
+  font-size:.8rem;font-weight:500;color:var(--muted);
+  letter-spacing:.05em;text-transform:uppercase;
+  transition:color .2s;padding:.25rem 0;
+  border-bottom:1px solid transparent;
+}
+.nav-center a:hover{color:var(--text);border-bottom-color:var(--blue)}
+.lang-toggle{
+  display:flex;background:var(--card);border:1px solid var(--border2);
+  border-radius:8px;overflow:hidden;
+}
+.lang-btn{
+  padding:.3rem .75rem;font-size:.78rem;font-weight:600;
+  font-family:'Inter',sans-serif;border:none;background:transparent;
+  color:var(--muted);cursor:pointer;transition:all .2s;
+  letter-spacing:.04em;
+}
+.lang-btn.active{background:var(--blue);color:#fff}
+
+/* ─── HERO ──────────────────────────────────────── */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding:80px clamp(1.5rem,5vw,3rem) 4rem;
+  position:relative;overflow:hidden;
+}
+.hero-glow-1{
+  position:absolute;top:-10%;right:-5%;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(59,130,246,.12) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-glow-2{
+  position:absolute;bottom:-10%;left:-5%;
+  width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,rgba(139,92,246,.08) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-inner{
+  max-width:1180px;margin:0 auto;width:100%;
+  display:grid;grid-template-columns:1fr 380px;
+  gap:4rem;align-items:center;
+  position:relative;z-index:1;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(59,130,246,.08);
+  border:1px solid rgba(59,130,246,.2);
+  border-radius:100px;padding:.3rem .9rem;
+  font-size:.75rem;font-weight:600;color:var(--blue);
+  letter-spacing:.06em;text-transform:uppercase;
+  margin-bottom:1.4rem;
+}
+.hero-badge-dot{
+  width:6px;height:6px;background:var(--blue);border-radius:50%;
+  animation:blink 2s ease infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-name{
+  font-family:'Poppins',sans-serif;
+  font-size:clamp(2rem,3.5vw,3rem);
+  font-weight:800;
+  line-height:1.1;
+  letter-spacing:-.03em;
+  margin-bottom:.5rem;
+  color:#fff;
+}
+.hero-name span{
+  background:linear-gradient(135deg,var(--blue) 0%,var(--purple) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero-role{
+  font-size:1.1rem;font-weight:500;color:var(--muted);
+  margin-bottom:1rem;letter-spacing:.01em;
+}
+.hero-headline{
+  font-family:'Poppins',sans-serif;
+  font-size:clamp(1.6rem,2.8vw,2.2rem);
+  font-weight:700;line-height:1.2;
+  color:#fff;margin-bottom:1rem;
+  letter-spacing:-.02em;
+}
+.hero-sub{
+  font-size:.95rem;color:var(--muted);
+  line-height:1.75;max-width:500px;
+  margin-bottom:2.5rem;
+}
+.hero-btns{display:flex;gap:.9rem;flex-wrap:wrap}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:.45rem;
+  background:linear-gradient(135deg,var(--blue),var(--purple));
+  color:#fff;padding:.7rem 1.5rem;border-radius:9px;
+  font-size:.875rem;font-weight:600;
+  transition:transform .2s,box-shadow .2s;
+  box-shadow:0 4px 24px rgba(59,130,246,.3);
+  letter-spacing:.01em;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(59,130,246,.45)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:.45rem;
+  background:var(--card);border:1px solid var(--border2);
+  color:var(--text);padding:.7rem 1.5rem;border-radius:9px;
+  font-size:.875rem;font-weight:500;
+  transition:all .2s;
+}
+.btn-ghost:hover{border-color:rgba(59,130,246,.4);color:var(--blue);background:rgba(59,130,246,.06)}
+
+/* ─── HERO PHOTO ────────────────────────────────── */
+.hero-photo-col{
+  display:flex;flex-direction:column;align-items:center;gap:1.2rem;
+}
+.photo-ring{
+  position:relative;padding:3px;border-radius:50%;
+  background:linear-gradient(135deg,var(--blue),var(--purple),var(--cyan));
+  box-shadow:0 0 40px rgba(59,130,246,.3);
+}
+.photo-ring::before{
+  content:'';
+  position:absolute;
+  inset:-18px;
+  border-radius:50%;
+  background:radial-gradient(circle at 60% 30%,rgba(59,130,246,.18),rgba(139,92,246,.14) 50%,rgba(6,182,212,.08) 100%);
+  filter:blur(18px);
+  z-index:-1;
+}
+.hero-photo{
+  width:180px;height:180px;
+  border-radius:50%;
+  object-fit:cover;object-position:top center;
+  display:block;
+  border:3px solid var(--bg);
+}
+.hero-stat-pills{
+  display:flex;flex-direction:column;gap:.6rem;width:100%;
+  max-width:220px;
+}
+.stat-pill{
+  display:flex;align-items:center;gap:.6rem;
+  background:var(--card);border:1px solid var(--border2);
+  border-radius:10px;padding:.55rem .9rem;
+  font-size:.78rem;font-weight:500;
+  box-shadow:0 2px 12px rgba(0,0,0,.3);
+}
+.pill-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.pill-dot.blue{background:var(--blue)}
+.pill-dot.purple{background:var(--purple)}
+.pill-dot.green{background:var(--green)}
+
+/* ─── SECTION COMMON ────────────────────────────── */
+.section-wrap{
+  max-width:1180px;margin:0 auto;
+  padding:5rem clamp(1.5rem,5vw,3rem);
+}
+.section-eyebrow{
+  display:flex;align-items:center;gap:.6rem;
+  font-size:.72rem;font-weight:700;color:var(--blue);
+  letter-spacing:.12em;text-transform:uppercase;margin-bottom:.8rem;
+}
+.section-eyebrow::before{
+  content:'';width:20px;height:2px;
+  background:linear-gradient(90deg,var(--blue),var(--purple));
+  border-radius:2px;
+}
+.section-title{
+  font-family:'Poppins',sans-serif;
+  font-size:clamp(1.7rem,3vw,2.4rem);
+  font-weight:700;letter-spacing:-.03em;
+  margin-bottom:.6rem;color:#fff;
+}
+.section-desc{
+  color:var(--muted);font-size:.95rem;
+  max-width:580px;line-height:1.75;
+  margin-bottom:3rem;
+}
+
+/* ─── DIVIDER ───────────────────────────────────── */
+.divider{
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--border2) 20%,var(--border2) 80%,transparent);
+  margin:0 clamp(1.5rem,5vw,3rem);
+}
+
+/* ─── DASHBOARD CARDS ───────────────────────────── */
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+  gap:1.5rem;
+}
+.proj-card{
+  background:var(--card);
+  border:1px solid var(--border2);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
+  cursor:pointer;
+}
+.proj-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 0 1px rgba(59,130,246,.2);
+  border-color:rgba(59,130,246,.25);
+}
+
+/* Preview area */
+.proj-preview{
+  height:180px;position:relative;overflow:hidden;
+  background:var(--bg2);
+}
+.proj-preview iframe{
+  width:166.67%;height:166.67%;
+  transform:scale(.6);transform-origin:0 0;
+  border:none;pointer-events:none;
+  display:block;
+}
+.proj-preview-overlay{
+  position:absolute;inset:0;z-index:2;
+  background:linear-gradient(to bottom,transparent 50%,var(--card) 100%);
+}
+/* Fallback mockup */
+.proj-mockup{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  padding:14px;gap:8px;background:var(--bg2);
+}
+.mck-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
+.mck-dots{display:flex;gap:4px}
+.mck-dot{width:8px;height:8px;border-radius:50%}
+.mck-bar{height:8px;border-radius:4px;background:var(--border2)}
+.mck-row{display:flex;gap:6px;flex:1}
+.mck-block{border-radius:6px;background:rgba(59,130,246,.12)}
+.mck-chart{display:flex;align-items:flex-end;gap:4px;flex:1}
+.mck-col{border-radius:4px 4px 0 0;flex:1;min-height:20%}
+.proj-num{
+  position:absolute;top:10px;right:12px;z-index:3;
+  font-family:'JetBrains Mono',monospace;font-size:.65rem;
+  font-weight:500;color:rgba(255,255,255,.2);letter-spacing:.08em;
+}
+.proj-tag-top{
+  position:absolute;top:10px;left:12px;z-index:3;
+  font-size:.68rem;font-weight:600;
+  padding:.18rem .55rem;border-radius:100px;
+  background:rgba(0,0,0,.5);backdrop-filter:blur(6px);
+  border:1px solid var(--border2);color:var(--muted);
+}
+
+/* Card body */
+.proj-body{padding:1.4rem}
+.proj-title{
+  font-family:'Poppins',sans-serif;
+  font-size:1.05rem;font-weight:700;
+  color:#fff;margin-bottom:.45rem;
+  letter-spacing:-.01em;
+}
+.proj-desc{
+  color:var(--muted);font-size:.85rem;
+  line-height:1.65;margin-bottom:1.2rem;
+}
+.proj-actions{display:flex;gap:.6rem;flex-wrap:wrap}
+.btn-sm{
+  display:inline-flex;align-items:center;gap:.35rem;
+  padding:.42rem .95rem;border-radius:7px;
+  font-size:.78rem;font-weight:600;
+  transition:all .2s;letter-spacing:.01em;
+}
+.btn-sm.blue{
+  background:rgba(59,130,246,.12);color:var(--blue);
+  border:1px solid rgba(59,130,246,.25);
+}
+.btn-sm.blue:hover{background:var(--blue);color:#fff;box-shadow:0 4px 16px rgba(59,130,246,.3)}
+.btn-sm.ghost{
+  background:transparent;color:var(--subtle);
+  border:1px solid var(--border2);
+}
+.btn-sm.ghost:hover{color:var(--text);border-color:rgba(255,255,255,.15)}
+
+/* ─── ARCHITECTURE ──────────────────────────────── */
+.arch-card{
+  background:var(--card);border:1px solid var(--border2);
+  border-radius:var(--radius-lg);padding:2.5rem;
+  background:linear-gradient(135deg,rgba(59,130,246,.04),rgba(139,92,246,.03));
+}
+.pipeline{
+  display:flex;align-items:center;justify-content:center;
+  gap:0;flex-wrap:wrap;margin:2rem 0 2.5rem;
+}
+.pipe-node{
+  display:flex;flex-direction:column;align-items:center;gap:.4rem;
+  background:var(--bg);border:1px solid var(--border2);
+  border-radius:var(--radius);padding:1.1rem 1.4rem;
+  min-width:120px;text-align:center;
+  transition:border-color .3s,transform .3s;
+}
+.pipe-node:hover{border-color:var(--blue);transform:translateY(-3px)}
+.pipe-emoji{font-size:1.5rem}
+.pipe-label{font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.pipe-sep{color:var(--subtle);font-size:1.2rem;padding:0 .4rem;line-height:1}
+.arch-desc{
+  text-align:center;color:var(--muted);font-size:.9rem;
+  line-height:1.75;max-width:640px;margin:0 auto;
+}
+
+/* ─── SQL ───────────────────────────────────────── */
+.code-card{
+  background:#0b1525;border:1px solid var(--border2);
+  border-radius:var(--radius-lg);overflow:hidden;margin-bottom:2rem;
+}
+.code-top{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.7rem 1.2rem;
+  background:rgba(255,255,255,.02);
+  border-bottom:1px solid var(--border2);
+}
+.code-dots{display:flex;gap:.35rem}
+.cd{width:10px;height:10px;border-radius:50%}
+.cd.r{background:#ff5f57}.cd.y{background:#febc2e}.cd.g{background:#28c840}
+.code-lang{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--subtle)}
+pre{padding:1.5rem;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:.8rem;line-height:1.8;color:#cdd6f4}
+.kw{color:#cba6f7}.fn{color:#89b4fa}.str{color:#a6e3a1}.cm{color:#6c7086;font-style:italic}
+.num{color:#fab387}.op{color:#89dceb}.tbl{color:#f38ba8}
+
+.auto-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.auto-item{
+  background:var(--card);border:1px solid var(--border2);
+  border-radius:var(--radius);padding:1.3rem;
+  transition:border-color .3s,transform .3s;
+}
+.auto-item:hover{border-color:rgba(139,92,246,.35);transform:translateY(-2px)}
+.auto-icon{font-size:1.3rem;margin-bottom:.6rem}
+.auto-title{font-size:.875rem;font-weight:600;color:#fff;margin-bottom:.3rem}
+.auto-desc{font-size:.8rem;color:var(--muted);line-height:1.6}
+
+/* ─── GITHUB ────────────────────────────────────── */
+.gh-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem}
+.gh-card{
+  background:var(--card);border:1px solid var(--border2);
+  border-radius:var(--radius);padding:1.4rem;
+  transition:all .25s;
+}
+.gh-card:hover{border-color:rgba(16,185,129,.3);transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.3)}
+.gh-top{display:flex;align-items:flex-start;justify-content:space-between;gap:.5rem;margin-bottom:.7rem}
+.gh-repo{font-family:'JetBrains Mono',monospace;font-size:.85rem;font-weight:500;color:var(--blue)}
+.gh-arrow{color:var(--subtle);font-size:.9rem}
+.gh-desc{color:var(--muted);font-size:.83rem;line-height:1.65;margin-bottom:1rem}
+.tags{display:flex;flex-wrap:wrap;gap:.35rem}
+.tag{
+  font-size:.7rem;padding:.18rem .55rem;border-radius:100px;
+  background:rgba(16,185,129,.08);color:var(--green);
+  border:1px solid rgba(16,185,129,.18);font-weight:600;
+}
+
+/* ─── GLOBAL REACH ──────────────────────────────── */
+.global-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;margin-bottom:2.5rem;
+}
+.gstat-card{
+  background:var(--card);border:1px solid var(--border2);
+  border-radius:var(--radius-lg);padding:1.8rem 1.2rem;
+  text-align:center;
+}
+.gstat-num{
+  font-family:'Poppins',sans-serif;font-weight:800;
+  font-size:clamp(1.8rem,3vw,2.4rem);
+  background:linear-gradient(135deg,var(--blue),var(--purple));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:.3rem;
+}
+.gstat-label{font-size:.82rem;color:var(--muted);font-weight:500}
+.country-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:1.2rem;
+}
+.country-card{
+  background:var(--card);border:1px solid var(--border2);
+  border-radius:var(--radius);padding:1.3rem;
+  transition:border-color .3s,transform .3s;
+}
+.country-card:hover{border-color:rgba(59,130,246,.3);transform:translateY(-3px)}
+.country-flag{font-size:1.6rem;margin-bottom:.5rem}
+.country-name{font-family:'Poppins',sans-serif;font-weight:700;font-size:.95rem;color:#fff;margin-bottom:.3rem}
+.country-desc{font-size:.8rem;color:var(--muted);line-height:1.6}
+
+/* ─── TESTIMONIALS ──────────────────────────────── */
+.testi-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:1.5rem;
+}
+.testi-card{
+  background:var(--card);border:1px solid var(--border2);
+  border-radius:var(--radius-lg);padding:1.8rem;
+  display:flex;flex-direction:column;gap:1rem;
+  transition:border-color .3s,transform .3s;
+}
+.testi-card:hover{border-color:rgba(59,130,246,.25);transform:translateY(-4px)}
+.testi-quote{font-size:.87rem;color:var(--text);line-height:1.75;flex:1}
+.testi-quote::before{content:'“';color:var(--blue);font-size:1.4rem;font-weight:700}
+.testi-author{display:flex;align-items:center;gap:.7rem;padding-top:.8rem;border-top:1px solid var(--border2)}
+.testi-avatar{
+  width:38px;height:38px;border-radius:50%;
+  background:linear-gradient(135deg,var(--blue),var(--purple));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Poppins',sans-serif;font-weight:700;color:#fff;font-size:.85rem;
+  flex-shrink:0;
+}
+.testi-name{font-size:.85rem;font-weight:700;color:#fff}
+.testi-role{font-size:.75rem;color:var(--muted)}
+
+/* ─── FAQ ───────────────────────────────────────── */
+.faq-list{display:flex;flex-direction:column;gap:.8rem;max-width:760px}
+.faq-item{
+  background:var(--card);border:1px solid var(--border2);
+  border-radius:var(--radius);overflow:hidden;
+}
+.faq-q{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 1.4rem;cursor:pointer;
+  font-weight:600;font-size:.9rem;color:#fff;
+}
+.faq-q .faq-icon{color:var(--blue);transition:transform .25s;flex-shrink:0;margin-left:1rem}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{
+  max-height:0;overflow:hidden;transition:max-height .3s ease;
+  color:var(--muted);font-size:.85rem;line-height:1.7;
+}
+.faq-item.open .faq-a{max-height:220px}
+.faq-a-inner{padding:0 1.4rem 1.1rem}
+
+/* ─── ABOUT ─────────────────────────────────────── */
+.about-layout{display:grid;grid-template-columns:auto 1fr;gap:3rem;align-items:start}
+.about-photo-wrap{
+  position:relative;width:120px;
+}
+.about-photo-ring{
+  padding:2px;border-radius:var(--radius);
+  background:linear-gradient(135deg,var(--blue),var(--purple));
+  box-shadow:0 8px 30px rgba(59,130,246,.2);
+}
+.about-photo{
+  width:116px;height:116px;object-fit:cover;object-position:top center;
+  border-radius:calc(var(--radius) - 2px);display:block;
+  border:2px solid var(--bg);
+}
+.about-text p{color:var(--muted);font-size:.95rem;line-height:1.8;margin-bottom:1.5rem}
+.skills-wrap{display:flex;flex-wrap:wrap;gap:.5rem}
+.skill{
+  padding:.28rem .75rem;
+  background:rgba(59,130,246,.07);
+  border:1px solid rgba(59,130,246,.18);
+  border-radius:100px;font-size:.78rem;
+  color:var(--blue);font-weight:600;
+}
+
+/* ─── CONTACT ───────────────────────────────────── */
+.contact-card{
+  background:var(--card);border:1px solid var(--border2);
+  border-radius:var(--radius-lg);padding:3.5rem 2rem;
+  text-align:center;
+  background:linear-gradient(135deg,rgba(59,130,246,.04) 0%,rgba(139,92,246,.04) 100%);
+  position:relative;overflow:hidden;
+}
+.contact-card::before{
+  content:'';position:absolute;
+  top:-80px;left:50%;transform:translateX(-50%);
+  width:300px;height:300px;
+  background:radial-gradient(circle,rgba(59,130,246,.08),transparent 70%);
+  pointer-events:none;
+}
+.contact-links{display:flex;justify-content:center;gap:.9rem;flex-wrap:wrap;margin:2rem 0}
+.contact-link{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--bg);border:1px solid var(--border2);
+  border-radius:9px;padding:.6rem 1.3rem;
+  font-size:.85rem;font-weight:500;color:var(--text);
+  transition:all .2s;
+}
+.contact-link:hover{border-color:rgba(59,130,246,.4);color:var(--blue);background:rgba(59,130,246,.06)}
+
+/* ─── CONTACT FORM ──────────────────────────────── */
+.contact-form{
+  max-width:480px;margin:2rem auto 0;text-align:left;
+  display:flex;flex-direction:column;gap:1rem;
+}
+.form-row{display:flex;gap:1rem;flex-wrap:wrap}
+.form-field{flex:1;min-width:180px;display:flex;flex-direction:column;gap:.4rem}
+.form-field label{font-size:.78rem;font-weight:600;color:var(--muted);letter-spacing:.02em}
+.form-field input,
+.form-field select,
+.form-field textarea{
+  background:var(--bg);border:1px solid var(--border2);
+  border-radius:9px;padding:.7rem .9rem;
+  font-family:'Inter',sans-serif;font-size:.88rem;color:var(--text);
+  transition:border-color .2s;resize:vertical;
+}
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus{outline:none;border-color:rgba(59,130,246,.5)}
+.form-field textarea{min-height:110px}
+.form-submit-row{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:center}
+.form-status{font-size:.82rem;color:var(--muted)}
+.form-status.success{color:var(--green)}
+.form-status.error{color:#f87171}
+.btn-primary[type="submit"]{border:none;cursor:pointer;font-family:'Inter',sans-serif}
+.btn-primary:disabled{opacity:.6;cursor:not-allowed}
+
+/* ─── FOOTER ────────────────────────────────────── */
+footer{
+  text-align:center;padding:2rem;
+  color:var(--subtle);font-size:.78rem;
+  border-top:1px solid var(--border2);
+}
+
+/* ─── ANIMATIONS ────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ─── RESPONSIVE ────────────────────────────────── */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:2.5rem}
+  .hero-photo-col{flex-direction:row;align-items:center;gap:1.5rem}
+  .hero-stat-pills{flex-direction:row;flex-wrap:wrap;max-width:none}
+  .about-layout{grid-template-columns:1fr;gap:1.5rem}
+}
+@media(max-width:640px){
+  .nav-center{display:none}
+  .projects-grid{grid-template-columns:1fr}
+  .hero-photo-col{flex-direction:column}
+  .hero-photo{width:140px;height:140px}
+  .global-stats{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══════════════════════════════════════ -->
+<nav>
+  <div class="nav-logo">DataAnalyst.io</div>
+  <div class="nav-center">
+    <a href="#projects" data-en="Dashboards" data-pt="Dashboards">Dashboards</a>
+    <a href="#sql" data-en="SQL" data-pt="SQL">SQL</a>
+    <a href="#github" data-en="Projects" data-pt="Projetos">Projects</a>
+    <a href="#global" data-en="Global" data-pt="Global">Global</a>
+    <a href="#testimonials" data-en="Testimonials" data-pt="Depoimentos">Testimonials</a>
+    <a href="#about" data-en="About" data-pt="Sobre">About</a>
+    <a href="#contact" data-en="Contact" data-pt="Contato">Contact</a>
+  </div>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('pt')">PT</button>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══════════════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-glow-1"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-inner">
+
+    <!-- TEXT -->
+    <div class="reveal">
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        <span data-en="Open to new opportunities" data-pt="Aberta a novas oportunidades">Open to new opportunities</span>
+      </div>
+      <div class="hero-name" data-en="Romaíne Santos" data-pt="Romaíne Santos">Romaíne Santos</div>
+      <div class="hero-role" data-en="Data Analyst · SQL · Automation · BI" data-pt="Analista de Dados · SQL · Automação · BI">Data Analyst · SQL · Automation · BI</div>
+      <h1 class="hero-headline" data-en="Turning data into<br>strategic decisions" data-pt="Transformando dados em<br>decisões estratégicas">Turning data into<br>strategic decisions</h1>
+      <p class="hero-sub"
+         data-en="Specialist in building dashboards, data pipelines, and business-driven analytics, turning raw data into actionable insights for stakeholders."
+         data-pt="Especialista em dashboards, pipelines de dados e análise estratégica, transformando dados brutos em insights acionáveis para tomadores de decisão.">
+        Specialist in building dashboards, data pipelines, and business-driven analytics, turning raw data into actionable insights for stakeholders.
+      </p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary">
+          <span data-en="View Projects" data-pt="Ver Projetos">View Projects</span> →
+        </a>
+        <a href="https://github.com/Romaineas" target="_blank" class="btn-ghost">
+          ⌥ GitHub
+        </a>
+      </div>
+    </div>
+
+    <!-- PHOTO -->
+    <div class="hero-photo-col reveal" style="transition-delay:.15s">
+      <div class="photo-ring">
+        <img src="hero-photo.jpg" alt="Romaíne Santos, Data Analyst" class="hero-photo"/>
+      </div>
+      <div class="hero-stat-pills">
+        <div class="stat-pill"><div class="pill-dot blue"></div><span data-en="59+ Projects Delivered" data-pt="59+ Projetos Entregues">59+ Projects Delivered</span></div>
+        <div class="stat-pill"><div class="pill-dot purple"></div><span data-en="5+ Live Dashboards" data-pt="5+ Dashboards Ativos">5+ Live Dashboards</span></div>
+        <div class="stat-pill"><div class="pill-dot green"></div><span data-en="5 Countries Collaborated" data-pt="5 Países de Colaboração">5 Countries Collaborated</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ PROJECTS ════════════════════════════════════ -->
+<div class="section-wrap" id="projects">
+  <div class="section-eyebrow" data-en="Dashboards" data-pt="Dashboards">Dashboards</div>
+  <h2 class="section-title" data-en="Live Projects" data-pt="Projetos ao Vivo">Live Projects</h2>
+  <p class="section-desc"
+     data-en="Production dashboards deployed on Vercel. Click to explore each project live."
+     data-pt="Dashboards em produção no Vercel. Clique para explorar cada projeto ao vivo.">
+    Production dashboards deployed on Vercel. Click to explore each project live.
+  </p>
+
+  <div class="projects-grid">
+
+    <!-- 1. CFO Suite -->
+    <div class="proj-card reveal">
+      <div class="proj-preview">
+        <div class="proj-mockup">
+          <div class="mck-header">
+            <div class="mck-dots">
+              <div class="mck-dot" style="background:#3b82f6;width:10px;height:10px;border-radius:2px"></div>
+              <div class="mck-dot" style="background:rgba(255,255,255,.1);width:24px;height:10px;border-radius:2px"></div>
+              <div class="mck-dot" style="background:rgba(255,255,255,.1);width:16px;height:10px;border-radius:2px"></div>
+            </div>
+            <div style="display:flex;gap:4px">
+              <div style="width:28px;height:10px;background:rgba(59,130,246,.2);border-radius:3px"></div>
+              <div style="width:28px;height:10px;background:rgba(59,130,246,.15);border-radius:3px"></div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+            <div style="background:rgba(59,130,246,.15);border-radius:6px;padding:8px;height:44px"><div style="height:6px;background:rgba(59,130,246,.4);border-radius:3px;margin-bottom:4px;width:60%"></div><div style="height:10px;background:rgba(59,130,246,.3);border-radius:3px;width:80%"></div></div>
+            <div style="background:rgba(139,92,246,.12);border-radius:6px;padding:8px;height:44px"><div style="height:6px;background:rgba(139,92,246,.4);border-radius:3px;margin-bottom:4px;width:60%"></div><div style="height:10px;background:rgba(139,92,246,.3);border-radius:3px;width:80%"></div></div>
+            <div style="background:rgba(16,185,129,.12);border-radius:6px;padding:8px;height:44px"><div style="height:6px;background:rgba(16,185,129,.4);border-radius:3px;margin-bottom:4px;width:60%"></div><div style="height:10px;background:rgba(16,185,129,.3);border-radius:3px;width:80%"></div></div>
+          </div>
+          <div style="flex:1;display:flex;align-items:flex-end;gap:5px;padding-top:4px">
+            <div style="flex:1;background:rgba(59,130,246,.35);border-radius:3px 3px 0 0;height:70%"></div>
+            <div style="flex:1;background:rgba(59,130,246,.25);border-radius:3px 3px 0 0;height:50%"></div>
+            <div style="flex:1;background:rgba(59,130,246,.45);border-radius:3px 3px 0 0;height:85%"></div>
+            <div style="flex:1;background:rgba(59,130,246,.3);border-radius:3px 3px 0 0;height:60%"></div>
+            <div style="flex:1;background:rgba(59,130,246,.5);border-radius:3px 3px 0 0;height:95%"></div>
+            <div style="flex:1;background:rgba(59,130,246,.35);border-radius:3px 3px 0 0;height:75%"></div>
+          </div>
+        </div>
+        <div class="proj-preview-overlay"></div>
+        <div class="proj-tag-top">Finance</div>
+        <div class="proj-num">01</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-title">CFO Suite Analytics</div>
+        <div class="proj-desc"
+             data-en="Executive financial dashboard focused on strategic decision-making for C-level leadership."
+             data-pt="Dashboard financeiro executivo focado em tomada de decisão estratégica para lideranças C-level.">
+          Executive financial dashboard focused on strategic decision-making for C-level leadership.
+        </div>
+        <div class="proj-actions">
+          <a href="https://cfo-suite-analytics.vercel.app/" target="_blank" class="btn-sm blue"
+             data-en="View Dashboard →" data-pt="Ver Dashboard →">View Dashboard →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. People Analytics -->
+    <div class="proj-card reveal" style="transition-delay:.07s">
+      <div class="proj-preview">
+        <div class="proj-mockup">
+          <div class="mck-header">
+            <div style="height:10px;width:80px;background:rgba(16,185,129,.3);border-radius:3px"></div>
+            <div style="height:10px;width:40px;background:rgba(16,185,129,.15);border-radius:3px"></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+            <div style="background:rgba(16,185,129,.1);border-radius:6px;padding:8px;height:50px;display:flex;flex-direction:column;justify-content:space-between"><div style="height:6px;background:rgba(16,185,129,.3);border-radius:3px;width:50%"></div><div style="height:14px;background:rgba(16,185,129,.25);border-radius:3px"></div></div>
+            <div style="background:rgba(16,185,129,.07);border-radius:6px;padding:8px;height:50px;display:flex;flex-direction:column;justify-content:space-between"><div style="height:6px;background:rgba(16,185,129,.25);border-radius:3px;width:50%"></div><div style="height:14px;background:rgba(16,185,129,.2);border-radius:3px"></div></div>
+          </div>
+          <div style="display:flex;gap:4px;flex:1;align-items:flex-end">
+            <div style="background:rgba(16,185,129,.12);border-radius:6px;padding:6px;flex:1;height:60px"><div style="height:100%;background:linear-gradient(180deg,rgba(16,185,129,.4),rgba(16,185,129,.1));border-radius:4px"></div></div>
+            <div style="flex:2;display:flex;flex-direction:column;gap:4px;justify-content:flex-end">
+              <div style="height:6px;background:rgba(16,185,129,.25);border-radius:3px;width:90%"></div>
+              <div style="height:6px;background:rgba(16,185,129,.2);border-radius:3px;width:70%"></div>
+              <div style="height:6px;background:rgba(16,185,129,.15);border-radius:3px;width:80%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="proj-preview-overlay"></div>
+        <div class="proj-tag-top">HR</div>
+        <div class="proj-num">02</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-title">People Analytics Dashboard</div>
+        <div class="proj-desc"
+             data-en="HR analytics focused on turnover, retention, and workforce performance metrics."
+             data-pt="Dashboard de RH com foco em turnover, retenção e métricas de performance de colaboradores.">
+          HR analytics focused on turnover, retention, and workforce performance metrics.
+        </div>
+        <div class="proj-actions">
+          <a href="https://people-analytics-dashboard-delta.vercel.app/" target="_blank" class="btn-sm blue"
+             data-en="View Dashboard →" data-pt="Ver Dashboard →">View Dashboard →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Marketing -->
+    <div class="proj-card reveal" style="transition-delay:.14s">
+      <div class="proj-preview">
+        <div class="proj-mockup">
+          <div style="display:flex;gap:6px;margin-bottom:6px">
+            <div style="height:10px;background:rgba(245,158,11,.3);border-radius:3px;width:60%"></div>
+            <div style="height:10px;background:rgba(245,158,11,.15);border-radius:3px;flex:1"></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-bottom:6px">
+            <div style="height:32px;background:rgba(245,158,11,.12);border-radius:6px;padding:4px 6px"><div style="height:5px;background:rgba(245,158,11,.35);border-radius:2px;width:50%;margin-bottom:3px"></div><div style="height:8px;background:rgba(245,158,11,.25);border-radius:2px"></div></div>
+            <div style="height:32px;background:rgba(59,130,246,.1);border-radius:6px;padding:4px 6px"><div style="height:5px;background:rgba(59,130,246,.35);border-radius:2px;width:50%;margin-bottom:3px"></div><div style="height:8px;background:rgba(59,130,246,.25);border-radius:2px"></div></div>
+            <div style="height:32px;background:rgba(245,158,11,.08);border-radius:6px;padding:4px 6px"><div style="height:5px;background:rgba(245,158,11,.3);border-radius:2px;width:50%;margin-bottom:3px"></div><div style="height:8px;background:rgba(245,158,11,.2);border-radius:2px"></div></div>
+          </div>
+          <div style="flex:1;display:flex;align-items:center;gap:6px">
+            <div style="flex:3;height:70px;background:rgba(245,158,11,.06);border-radius:6px;padding:6px;display:flex;flex-direction:column;justify-content:flex-end;gap:3px">
+              <div style="height:4px;background:rgba(245,158,11,.4);border-radius:2px;width:80%"></div>
+              <div style="height:4px;background:rgba(59,130,246,.35);border-radius:2px;width:60%"></div>
+              <div style="height:4px;background:rgba(245,158,11,.3);border-radius:2px;width:90%"></div>
+              <div style="height:4px;background:rgba(59,130,246,.25);border-radius:2px;width:50%"></div>
+            </div>
+            <div style="flex:1;height:70px;background:rgba(245,158,11,.06);border-radius:6px;display:flex;align-items:center;justify-content:center">
+              <div style="width:44px;height:44px;border-radius:50%;background:conic-gradient(rgba(245,158,11,.5) 0% 60%,rgba(59,130,246,.4) 60% 85%,rgba(16,185,129,.3) 85% 100%)"></div>
+            </div>
+          </div>
+        </div>
+        <div class="proj-preview-overlay"></div>
+        <div class="proj-tag-top">Marketing</div>
+        <div class="proj-num">03</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-title">Marketing Analytics</div>
+        <div class="proj-desc"
+             data-en="Marketing performance dashboard with campaign ROI, acquisition, and conversion metrics."
+             data-pt="Dashboard de marketing com ROI de campanhas, aquisição e métricas de conversão.">
+          Marketing performance dashboard with campaign ROI, acquisition, and conversion metrics.
+        </div>
+        <div class="proj-actions">
+          <a href="https://marketing-analytics-dash.vercel.app/" target="_blank" class="btn-sm blue"
+             data-en="View Dashboard →" data-pt="Ver Dashboard →">View Dashboard →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Logistics -->
+    <div class="proj-card reveal" style="transition-delay:.07s">
+      <div class="proj-preview">
+        <div class="proj-mockup">
+          <div style="display:flex;gap:5px;margin-bottom:6px">
+            <div style="height:10px;background:rgba(6,182,212,.35);border-radius:3px;width:70%"></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:6px">
+            <div style="height:38px;background:rgba(6,182,212,.1);border-radius:6px;padding:5px 7px"><div style="height:5px;background:rgba(6,182,212,.3);border-radius:2px;width:50%;margin-bottom:4px"></div><div style="height:10px;background:rgba(6,182,212,.25);border-radius:2px"></div></div>
+            <div style="height:38px;background:rgba(6,182,212,.07);border-radius:6px;padding:5px 7px"><div style="height:5px;background:rgba(6,182,212,.25);border-radius:2px;width:50%;margin-bottom:4px"></div><div style="height:10px;background:rgba(6,182,212,.2);border-radius:2px"></div></div>
+          </div>
+          <div style="flex:1;background:rgba(6,182,212,.05);border-radius:6px;padding:8px;display:flex;gap:4px;align-items:flex-end">
+            <div style="flex:1;background:rgba(6,182,212,.3);border-radius:3px 3px 0 0;height:55%"></div>
+            <div style="flex:1;background:rgba(6,182,212,.4);border-radius:3px 3px 0 0;height:80%"></div>
+            <div style="flex:1;background:rgba(6,182,212,.25);border-radius:3px 3px 0 0;height:45%"></div>
+            <div style="flex:1;background:rgba(6,182,212,.5);border-radius:3px 3px 0 0;height:95%"></div>
+            <div style="flex:1;background:rgba(6,182,212,.35);border-radius:3px 3px 0 0;height:65%"></div>
+            <div style="flex:1;background:rgba(6,182,212,.45);border-radius:3px 3px 0 0;height:85%"></div>
+          </div>
+        </div>
+        <div class="proj-preview-overlay"></div>
+        <div class="proj-tag-top">Logistics</div>
+        <div class="proj-num">04</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-title">Logistics Intelligence Brazil</div>
+        <div class="proj-desc"
+             data-en="Logistics dashboard analyzing delivery operations, route efficiency, and performance KPIs."
+             data-pt="Dashboard logístico analisando operações de entrega, eficiência de rotas e KPIs de performance.">
+          Logistics dashboard analyzing delivery operations, route efficiency, and performance KPIs.
+        </div>
+        <div class="proj-actions">
+          <a href="https://logistics-intelligence-brazil.vercel.app/" target="_blank" class="btn-sm blue"
+             data-en="View Dashboard →" data-pt="Ver Dashboard →">View Dashboard →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. People 360 -->
+    <div class="proj-card reveal" style="transition-delay:.14s">
+      <div class="proj-preview">
+        <div class="proj-mockup">
+          <div style="display:flex;gap:6px;margin-bottom:6px">
+            <div style="height:10px;background:rgba(139,92,246,.35);border-radius:3px;width:55%"></div>
+            <div style="height:10px;background:rgba(139,92,246,.2);border-radius:3px;flex:1"></div>
+          </div>
+          <div style="display:flex;gap:6px;margin-bottom:6px">
+            <div style="width:60px;height:60px;border-radius:50%;background:conic-gradient(rgba(139,92,246,.5) 0% 70%,rgba(59,130,246,.35) 70% 88%,rgba(16,185,129,.3) 88% 100%);flex-shrink:0"></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:5px;justify-content:center">
+              <div style="display:flex;gap:4px;align-items:center"><div style="width:8px;height:8px;border-radius:50%;background:rgba(139,92,246,.6)"></div><div style="height:5px;background:rgba(139,92,246,.3);border-radius:2px;flex:1"></div></div>
+              <div style="display:flex;gap:4px;align-items:center"><div style="width:8px;height:8px;border-radius:50%;background:rgba(59,130,246,.6)"></div><div style="height:5px;background:rgba(59,130,246,.25);border-radius:2px;flex:1"></div></div>
+              <div style="display:flex;gap:4px;align-items:center"><div style="width:8px;height:8px;border-radius:50%;background:rgba(16,185,129,.6)"></div><div style="height:5px;background:rgba(16,185,129,.2);border-radius:2px;flex:1"></div></div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px;flex:1">
+            <div style="height:5px;background:rgba(139,92,246,.3);border-radius:2px;width:90%"></div>
+            <div style="height:5px;background:rgba(139,92,246,.2);border-radius:2px;width:70%"></div>
+            <div style="height:5px;background:rgba(139,92,246,.15);border-radius:2px;width:80%"></div>
+          </div>
+        </div>
+        <div class="proj-preview-overlay"></div>
+        <div class="proj-tag-top">HR 360</div>
+        <div class="proj-num">05</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-title">People Analytics 360</div>
+        <div class="proj-desc"
+             data-en="Complete HR analytics overview: employee engagement, performance, and organizational insights."
+             data-pt="Visão completa de RH: engajamento, performance e insights organizacionais de colaboradores.">
+          Complete HR analytics overview: employee engagement, performance, and organizational insights.
+        </div>
+        <div class="proj-actions">
+          <a href="https://people-analytics-360.vercel.app/" target="_blank" class="btn-sm blue"
+             data-en="View Dashboard →" data-pt="Ver Dashboard →">View Dashboard →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══ ARCHITECTURE ════════════════════════════════ -->
+<div class="section-wrap" id="architecture">
+  <div class="section-eyebrow" data-en="Architecture" data-pt="Arquitetura">Architecture</div>
+  <h2 class="section-title" data-en="Data Architecture" data-pt="Arquitetura de Dados">Data Architecture</h2>
+  <p class="section-desc"
+     data-en="End-to-end pipeline design: from raw ingestion to business-ready dashboards."
+     data-pt="Design de pipeline completo: da ingestão bruta a dashboards prontos para o negócio.">
+    End-to-end pipeline design: from raw ingestion to business-ready dashboards.
+  </p>
+  <div class="arch-card reveal">
+    <div class="pipeline">
+      <div class="pipe-node">
+        <div class="pipe-emoji">🗄️</div>
+        <div class="pipe-label" data-en="Raw Data" data-pt="Dados Brutos">Raw Data</div>
+      </div>
+      <div class="pipe-sep">→</div>
+      <div class="pipe-node">
+        <div class="pipe-emoji">⚙️</div>
+        <div class="pipe-label">ETL</div>
+      </div>
+      <div class="pipe-sep">→</div>
+      <div class="pipe-node">
+        <div class="pipe-emoji">🏛️</div>
+        <div class="pipe-label" data-en="Database" data-pt="Banco de Dados">Database</div>
+      </div>
+      <div class="pipe-sep">→</div>
+      <div class="pipe-node">
+        <div class="pipe-emoji">📈</div>
+        <div class="pipe-label">Dashboard</div>
+      </div>
+    </div>
+    <p class="arch-desc"
+       data-en="Capable of designing, building, and maintaining complete data architectures: from source systems and ETL processes through structured relational databases to interactive analytics dashboards for decision-makers."
+       data-pt="Capacidade de projetar, construir e manter arquiteturas de dados completas: desde sistemas de origem e processos ETL até bancos de dados estruturados e dashboards interativos para tomadores de decisão.">
+      Capable of designing, building, and maintaining complete data architectures: from source systems and ETL processes through structured relational databases to interactive analytics dashboards for decision-makers.
+    </p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══ SQL & AUTOMATION ════════════════════════════ -->
+<div class="section-wrap" id="sql">
+  <div class="section-eyebrow">SQL & Automation</div>
+  <h2 class="section-title" data-en="SQL & Automation" data-pt="SQL & Automação">SQL & Automation</h2>
+  <p class="section-desc"
+     data-en="SQL applied for business insights, KPI tracking, cohort analysis, and data transformation at scale."
+     data-pt="SQL aplicado para insights de negócio, monitoramento de KPIs, análise de coorte e transformação de dados em escala.">
+    SQL applied for business insights, KPI tracking, cohort analysis, and data transformation at scale.
+  </p>
+
+  <div class="code-card reveal">
+    <div class="code-top">
+      <div class="code-dots"><div class="cd r"></div><div class="cd y"></div><div class="cd g"></div></div>
+      <div class="code-lang">cohort_retention_analysis.sql</div>
+    </div>
+<pre><span class="cm">-- Monthly Cohort Retention Analysis</span>
+<span class="kw">WITH</span> monthly_activity <span class="kw">AS</span> (
+  <span class="kw">SELECT</span>
+    user_id,
+    <span class="fn">DATE_TRUNC</span>(<span class="str">'month'</span>, event_date)   <span class="kw">AS</span> active_month,
+    <span class="fn">COUNT</span>(<span class="op">*</span>)                            <span class="kw">AS</span> total_events
+  <span class="kw">FROM</span> <span class="tbl">events</span>
+  <span class="kw">WHERE</span> event_date <span class="op">>=</span> <span class="fn">CURRENT_DATE</span> <span class="op">-</span> <span class="kw">INTERVAL</span> <span class="str">'6 months'</span>
+  <span class="kw">GROUP BY</span> <span class="num">1</span>, <span class="num">2</span>
+),
+first_seen <span class="kw">AS</span> (
+  <span class="kw">SELECT</span> user_id, <span class="fn">MIN</span>(active_month) <span class="kw">AS</span> cohort_month
+  <span class="kw">FROM</span> monthly_activity
+  <span class="kw">GROUP BY</span> user_id
+)
+<span class="kw">SELECT</span>
+  fs.cohort_month,
+  <span class="fn">COUNT</span>(<span class="kw">DISTINCT</span> fs.user_id)                          <span class="kw">AS</span> cohort_size,
+  <span class="fn">COUNT</span>(<span class="kw">DISTINCT</span> ma.user_id)                          <span class="kw">AS</span> retained_users,
+  <span class="fn">ROUND</span>(
+    <span class="fn">COUNT</span>(<span class="kw">DISTINCT</span> ma.user_id) <span class="op">*</span> <span class="num">100.0</span>
+    <span class="op">/</span> <span class="fn">NULLIF</span>(<span class="fn">COUNT</span>(<span class="kw">DISTINCT</span> fs.user_id), <span class="num">0</span>), <span class="num">2</span>
+  )                                                      <span class="kw">AS</span> retention_pct
+<span class="kw">FROM</span> first_seen fs
+<span class="kw">LEFT JOIN</span> monthly_activity ma <span class="kw">ON</span> fs.user_id <span class="op">=</span> ma.user_id
+<span class="kw">GROUP BY</span> fs.cohort_month
+<span class="kw">ORDER BY</span> fs.cohort_month;</pre>
+  </div>
+
+  <div class="auto-grid reveal">
+    <div class="auto-item">
+      <div class="auto-icon">🔄</div>
+      <div class="auto-title" data-en="ETL Pipelines" data-pt="Pipelines ETL">ETL Pipelines</div>
+      <div class="auto-desc" data-en="Automated extraction, transformation, and loading workflows connecting data sources to analytics layers." data-pt="Fluxos automatizados de extração, transformação e carregamento conectando fontes de dados a camadas analíticas.">Automated extraction, transformation, and loading workflows.</div>
+    </div>
+    <div class="auto-item">
+      <div class="auto-icon">🧹</div>
+      <div class="auto-title" data-en="Data Transformation" data-pt="Transformação de Dados">Data Transformation</div>
+      <div class="auto-desc" data-en="Cleaning, normalizing, and structuring raw data into analysis-ready models." data-pt="Limpeza, normalização e estruturação de dados brutos em modelos prontos para análise.">Cleaning, normalizing, and structuring raw data.</div>
+    </div>
+    <div class="auto-item">
+      <div class="auto-icon">⚡</div>
+      <div class="auto-title" data-en="Workflow Automation" data-pt="Automação de Fluxos">Workflow Automation</div>
+      <div class="auto-desc" data-en="Scheduled reports, automated alerts, and business process automation." data-pt="Relatórios agendados, alertas automatizados e automação de processos de negócio.">Scheduled reports, alerts, and automated pipelines.</div>
+    </div>
+    <div class="auto-item">
+      <div class="auto-icon">📊</div>
+      <div class="auto-title" data-en="KPI Dashboards" data-pt="Dashboards de KPI">KPI Dashboards</div>
+      <div class="auto-desc" data-en="Real-time business metrics with automated data refresh and alerting." data-pt="Métricas de negócio em tempo real com atualização automática e alertas.">Real-time metrics with automated data refresh.</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══ GITHUB ═══════════════════════════════════════ -->
+<div class="section-wrap" id="github">
+  <div class="section-eyebrow">GitHub</div>
+  <h2 class="section-title" data-en="Open Source Projects" data-pt="Projetos Open Source">Open Source Projects</h2>
+  <p class="section-desc"
+     data-en="Technical repositories showcasing data engineering, BI design, and pipeline architecture skills."
+     data-pt="Repositórios técnicos demonstrando engenharia de dados, design de BI e arquitetura de pipelines.">
+    Technical repositories showcasing data engineering, BI design, and pipeline architecture skills.
+  </p>
+  <div class="gh-grid">
+    <div class="gh-card reveal">
+      <div class="gh-top">
+        <div class="gh-repo">projeto-bi-logistica</div>
+        <div class="gh-arrow">↗</div>
+      </div>
+      <div class="gh-desc"
+           data-en="Business Intelligence solution for logistics: KPIs, delivery tracking, and route performance analysis built with SQL and Power BI."
+           data-pt="Solução de BI para logística: KPIs, rastreamento de entregas e análise de rotas com SQL e Power BI.">
+        Business Intelligence solution for logistics: KPIs, delivery tracking, and route performance analysis.
+      </div>
+      <div class="tags"><span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">ETL</span><span class="tag">KPIs</span></div>
+    </div>
+    <div class="gh-card reveal" style="transition-delay:.07s">
+      <div class="gh-top">
+        <div class="gh-repo">arquitetura-bank-pt</div>
+        <div class="gh-arrow">↗</div>
+      </div>
+      <div class="gh-desc"
+           data-en="Data architecture model for a Brazilian bank: normalized schema, data governance, and dimensional modeling."
+           data-pt="Modelo de arquitetura para banco brasileiro: esquema normalizado, governança e modelagem dimensional.">
+        Data architecture model for a Brazilian bank: normalized schema, governance, and dimensional modeling.
+      </div>
+      <div class="tags"><span class="tag">PostgreSQL</span><span class="tag">Architecture</span><span class="tag">Modeling</span></div>
+    </div>
+    <div class="gh-card reveal" style="transition-delay:.14s">
+      <div class="gh-top">
+        <div class="gh-repo">estrutura-etl-kaggle</div>
+        <div class="gh-arrow">↗</div>
+      </div>
+      <div class="gh-desc"
+           data-en="Structured ETL pipeline on Kaggle datasets: ingestion, cleaning, transformation, and loading into an analytics layer."
+           data-pt="Pipeline ETL com datasets Kaggle: ingestão, limpeza, transformação e carregamento em camada analítica.">
+        Structured ETL pipeline on Kaggle datasets: ingestion, cleaning, transformation, and analytics loading.
+      </div>
+      <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">ETL</span><span class="tag">Analytics</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══ GLOBAL REACH ═════════════════════════════════ -->
+<div class="section-wrap" id="global">
+  <div class="section-eyebrow" data-en="Global Reach" data-pt="Alcance Global">Global Reach</div>
+  <h2 class="section-title" data-en="Working with teams around the world" data-pt="Trabalhando com equipes ao redor do mundo">Working with teams around the world</h2>
+  <p class="section-desc"
+     data-en="Freelance and collaborative work across borders, delivering data solutions for clients and teams in multiple countries."
+     data-pt="Trabalho freelance e colaborativo além fronteiras, entregando soluções de dados para clientes e equipes em múltiplos países.">
+    Freelance and collaborative work across borders, delivering data solutions for clients and teams in multiple countries.
+  </p>
+
+  <div class="global-stats reveal">
+    <div class="gstat-card">
+      <div class="gstat-num">59+</div>
+      <div class="gstat-label" data-en="Projects Delivered" data-pt="Projetos Entregues">Projects Delivered</div>
+    </div>
+    <div class="gstat-card">
+      <div class="gstat-num">5+</div>
+      <div class="gstat-label" data-en="Countries Collaborated" data-pt="Países de Colaboração">Countries Collaborated</div>
+    </div>
+    <div class="gstat-card">
+      <div class="gstat-num">3+</div>
+      <div class="gstat-label" data-en="Years of Experience" data-pt="Anos de Experiência">Years of Experience</div>
+    </div>
+  </div>
+
+  <div class="country-grid">
+    <div class="country-card reveal">
+      <div class="country-flag">🇧🇷</div>
+      <div class="country-name">Brazil</div>
+      <div class="country-desc" data-en="Home base, local clients and remote teams." data-pt="Base, clientes locais e equipes remotas.">Home base, local clients and remote teams.</div>
+    </div>
+    <div class="country-card reveal" style="transition-delay:.05s">
+      <div class="country-flag">🇺🇸</div>
+      <div class="country-name">United States</div>
+      <div class="country-desc" data-en="Collaboration with US-based teams and clients." data-pt="Colaboração com equipes e clientes nos EUA.">Collaboration with US-based teams and clients.</div>
+    </div>
+    <div class="country-card reveal" style="transition-delay:.1s">
+      <div class="country-flag">🇮🇳</div>
+      <div class="country-name">India</div>
+      <div class="country-desc" data-en="Cross-border project work with Indian colleagues." data-pt="Projetos em conjunto com colegas na Índia.">Cross-border project work with Indian colleagues.</div>
+    </div>
+    <div class="country-card reveal" style="transition-delay:.15s">
+      <div class="country-flag">🇲🇽</div>
+      <div class="country-name">Mexico</div>
+      <div class="country-desc" data-en="Data projects delivered for Mexican clients." data-pt="Projetos de dados entregues para clientes mexicanos.">Data projects delivered for Mexican clients.</div>
+    </div>
+    <div class="country-card reveal" style="transition-delay:.2s">
+      <div class="country-flag">🇨🇴</div>
+      <div class="country-name">Colombia</div>
+      <div class="country-desc" data-en="Analytics and BI collaboration in Colombia." data-pt="Colaboração em analytics e BI na Colômbia.">Analytics and BI collaboration in Colombia.</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══ TESTIMONIALS ═════════════════════════════════ -->
+<div class="section-wrap" id="testimonials">
+  <div class="section-eyebrow" data-en="Testimonials" data-pt="Depoimentos">Testimonials</div>
+  <h2 class="section-title" data-en="What people say about my work" data-pt="O que dizem sobre meu trabalho">What people say about my work</h2>
+  <p class="section-desc"
+     data-en="Recommendations from colleagues and collaborators on LinkedIn."
+     data-pt="Recomendações de colegas e colaboradores no LinkedIn.">
+    Recommendations from colleagues and collaborators on LinkedIn.
+  </p>
+
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-quote"
+           data-en="I had the opportunity to closely follow Romaine Santos's work as a Data Analyst, and she stands out for a rare combination of technical depth and strong business and product vision. She masters SQL, Python, Power BI, Databricks, and PySpark, running analyses in a Big Data environment with security, organization, and a focus on performance, always ensuring data quality and traceability."
+           data-pt="Tive a oportunidade de acompanhar de perto o trabalho da Romaine Santos como Analista de Dados, e ela se destaca pela combinação rara de profundidade técnica com forte visão de negócio e produto. Ela domina SQL, Python, Power BI, Databricks e PySpark, conduzindo análises em ambiente de Big Data com segurança, organização e foco em performance, sempre garantindo qualidade e rastreabilidade dos dados.">
+        I had the opportunity to closely follow Romaine Santos's work as a Data Analyst, and she stands out for a rare combination of technical depth and strong business and product vision. She masters SQL, Python, Power BI, Databricks, and PySpark, running analyses in a Big Data environment with security, organization, and a focus on performance, always ensuring data quality and traceability.
+      </div>
+      <div class="testi-author">
+        <div class="testi-avatar">JR</div>
+        <div>
+          <div class="testi-name">Júlio César Ramos</div>
+          <div class="testi-role" data-en="Data Analyst · Data Scientist" data-pt="Analista de Dados · Cientista de Dados">Data Analyst · Data Scientist</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card reveal" style="transition-delay:.07s">
+      <div class="testi-quote"
+           data-en="During the time I had the opportunity to collaborate with Romaine, I could see her dedication and competence in every project. Her solid background in Administration and Marketing, combined with mastery of tools like VBA, Power BI, Python, and SQL, make her a complete professional prepared to turn data into strategic insights."
+           data-pt="Durante o período em que tive a oportunidade de colaborar com Romaine, pude perceber sua dedicação e competência em cada projeto. Sua sólida formação em Administração e Marketing, aliada ao domínio de ferramentas como VBA, Power BI, Python e SQL, fazem dela uma profissional completa e preparada para transformar dados em insights estratégicos.">
+        During the time I had the opportunity to collaborate with Romaine, I could see her dedication and competence in every project. Her solid background in Administration and Marketing, combined with mastery of tools like VBA, Power BI, Python, and SQL, make her a complete professional prepared to turn data into strategic insights.
+      </div>
+      <div class="testi-author">
+        <div class="testi-avatar">OM</div>
+        <div>
+          <div class="testi-name">Onivaldo Miquelino</div>
+          <div class="testi-role" data-en="ERP/CRM Integrations Specialist" data-pt="Especialista em Integrações ERP/CRM">ERP/CRM Integrations Specialist</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card reveal" style="transition-delay:.14s">
+      <div class="testi-quote"
+           data-en="A professional dedicated to turning complexity into clear, actionable results, bringing structure and strategy to every project she's part of."
+           data-pt="Uma profissional dedicada a transformar complexidade em resultados claros e acionáveis, trazendo estrutura e estratégia para cada projeto do qual participa.">
+        A professional dedicated to turning complexity into clear, actionable results, bringing structure and strategy to every project she's part of.
+      </div>
+      <div class="testi-author">
+        <div class="testi-avatar">JT</div>
+        <div>
+          <div class="testi-name">Jonas Tomaz</div>
+          <div class="testi-role" data-en="Product Manager" data-pt="Product Manager">Product Manager</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══ FAQ ═══════════════════════════════════════════ -->
+<div class="section-wrap" id="faq">
+  <div class="section-eyebrow" data-en="FAQ" data-pt="Perguntas Frequentes">FAQ</div>
+  <h2 class="section-title" data-en="Frequently Asked Questions" data-pt="Perguntas Frequentes">Frequently Asked Questions</h2>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span data-en="Where are you based?" data-pt="Onde você está baseada?">Where are you based?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner" data-en="Based in Brazil, working remotely with clients and teams across the Americas, Europe, and Asia." data-pt="Baseada no Brasil, trabalhando remotamente com clientes e equipes nas Américas, Europa e Ásia.">Based in Brazil, working remotely with clients and teams across the Americas, Europe, and Asia.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span data-en="What tools and technologies do you work with?" data-pt="Com quais ferramentas e tecnologias você trabalha?">What tools and technologies do you work with?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner" data-en="SQL, Power BI, Python, PostgreSQL, ETL pipelines, and data architecture, from raw ingestion to executive dashboards." data-pt="SQL, Power BI, Python, PostgreSQL, pipelines de ETL e arquitetura de dados, da ingestão bruta até dashboards executivos.">SQL, Power BI, Python, PostgreSQL, ETL pipelines, and data architecture, from raw ingestion to executive dashboards.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span data-en="Are you available for freelance or contract work?" data-pt="Você está disponível para freelance ou contrato?">Are you available for freelance or contract work?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner" data-en="Yes, open to freelance, contract, and full-time opportunities, local or international." data-pt="Sim, aberta a freelance, contrato e oportunidades CLT, locais ou internacionais.">Yes, open to freelance, contract, and full-time opportunities, local or international.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span data-en="Who should get in touch?" data-pt="Quem deve entrar em contato?">Who should get in touch?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a"><div class="faq-a-inner" data-en="Companies and teams needing dashboards, data pipelines, or BI strategy, from startups to enterprise." data-pt="Empresas e equipes que precisam de dashboards, pipelines de dados ou estratégia de BI, de startups a grandes empresas.">Companies and teams needing dashboards, data pipelines, or BI strategy, from startups to enterprise.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══ ABOUT ════════════════════════════════════════ -->
+<div class="section-wrap" id="about">
+  <div class="section-eyebrow" data-en="About" data-pt="Sobre">About</div>
+  <h2 class="section-title" data-en="About Me" data-pt="Sobre Mim">About Me</h2>
+  <div class="about-layout reveal">
+    <div class="about-photo-wrap">
+      <div class="about-photo-ring">
+        <img src="about-photo.jpg" alt="Romaíne Santos" class="about-photo"/>
+      </div>
+    </div>
+    <div class="about-text">
+      <p data-en="Data professional focused on analytics, SQL, and data pipelines. I transform raw, complex data into structured insights that drive business decisions, from designing scalable architectures to deploying interactive dashboards used by executives and managers."
+         data-pt="Profissional de dados com foco em análise, SQL e pipelines. Transformo dados complexos em insights estruturados que orientam decisões, desde arquiteturas escaláveis até dashboards interativos utilizados por executivos e gestores.">
+        Data professional focused on analytics, SQL, and data pipelines. I transform raw, complex data into structured insights that drive business decisions, from designing scalable architectures to deploying interactive dashboards used by executives and managers.
+      </p>
+      <div class="skills-wrap">
+        <span class="skill">SQL</span>
+        <span class="skill">Python</span>
+        <span class="skill">Power BI</span>
+        <span class="skill">ETL</span>
+        <span class="skill">Data Architecture</span>
+        <span class="skill">PostgreSQL</span>
+        <span class="skill">Pandas</span>
+        <span class="skill">Business Intelligence</span>
+        <span class="skill">Data Pipelines</span>
+        <span class="skill">Analytics</span>
+        <span class="skill">Vercel</span>
+        <span class="skill">Git</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══ CONTACT ══════════════════════════════════════ -->
+<div class="section-wrap" id="contact">
+  <div class="contact-card reveal">
+    <div class="section-eyebrow" style="justify-content:center" data-en="Contact" data-pt="Contato">Contact</div>
+    <h2 class="section-title" data-en="Let's Work Together" data-pt="Vamos Trabalhar Juntos">Let's Work Together</h2>
+    <p style="color:var(--muted);max-width:480px;margin:.5rem auto 0;font-size:.95rem;line-height:1.75"
+       data-en="Open to opportunities in data analytics, BI, and data engineering, local or international."
+       data-pt="Aberta a oportunidades em analytics, BI e engenharia de dados, local ou internacional.">
+      Open to opportunities in data analytics, BI, and data engineering, local or international.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:anunciacao.datanalysis@gmail.com" class="contact-link">✉ Email</a>
+      <a href="https://www.linkedin.com/in/romaine-santos/" target="_blank" class="contact-link">in LinkedIn</a>
+      <a href="https://github.com/Romaineas" target="_blank" class="contact-link">⌥ GitHub</a>
+    </div>
+
+    <!-- FORMSPREE CONTACT FORM -->
+    <form id="contact-form" class="contact-form" action="https://formspree.io/f/xbdngzpk" method="POST">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="cf-name" data-en="Name" data-pt="Nome">Name</label>
+          <input type="text" id="cf-name" name="name" required/>
+        </div>
+        <div class="form-field">
+          <label for="cf-email" data-en="Email" data-pt="E-mail">Email</label>
+          <input type="email" id="cf-email" name="email" required/>
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="cf-subject" data-en="Subject" data-pt="Assunto">Subject</label>
+        <select id="cf-subject" name="subject">
+          <option value="Job opportunity" data-en="Job opportunity" data-pt="Oportunidade de emprego">Job opportunity</option>
+          <option value="Freelance / Contract project" data-en="Freelance / Contract project" data-pt="Projeto freelance / contrato">Freelance / Contract project</option>
+          <option value="Just saying hi" data-en="Just saying hi" data-pt="Só para dizer oi">Just saying hi</option>
+          <option value="Other" data-en="Other" data-pt="Outro">Other</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="cf-message" data-en="Message" data-pt="Mensagem">Message</label>
+        <textarea id="cf-message" name="message" required></textarea>
+      </div>
+      <div class="form-submit-row">
+        <button type="submit" class="btn-primary" id="cf-submit-btn"
+                data-en="Send message →" data-pt="Enviar mensagem →">Send message →</button>
+        <span class="form-status" id="cf-status"></span>
+      </div>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <span data-en="Built with precision · Data turns into decisions · 2025" data-pt="Construído com precisão · Dados se transformam em decisões · 2025">
+    Built with precision · Data turns into decisions · 2025
+  </span>
+</footer>
+
+<script>
+/* ─── LANGUAGE TOGGLE ─── */
+let lang = 'en';
+function setLang(l) {
+  lang = l;
+  document.documentElement.lang = (l === 'pt') ? 'pt-BR' : 'en';
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.textContent.toLowerCase() === l);
+  });
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const txt = el.dataset[l];
+    if (!txt) return;
+    if (el.tagName === 'H1' || el.classList.contains('hero-headline')) {
+      el.innerHTML = txt;
+    } else {
+      el.textContent = txt;
+    }
+  });
+}
+
+/* ─── FAQ TOGGLE ─── */
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const wasOpen = item.classList.contains('open');
+  item.parentElement.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+/* ─── SCROLL REVEAL ─── */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ─── CONTACT FORM SUBMIT ─── */
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('cf-submit-btn');
+    const status = document.getElementById('cf-status');
+    const originalBtnText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = lang === 'pt' ? 'Enviando...' : 'Sending...';
+    status.textContent = '';
+    status.className = 'form-status';
+
+    try {
+      const res = await fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        status.textContent = lang === 'pt' ? 'Mensagem enviada! Obrigada, retorno em breve.' : 'Message sent! Thanks, I\'ll get back to you soon.';
+        status.classList.add('success');
+        contactForm.reset();
+      } else {
+        status.textContent = lang === 'pt' ? 'Algo deu errado. Tente novamente ou use o e-mail acima.' : 'Something went wrong. Try again or use the email above.';
+        status.classList.add('error');
+      }
+    } catch (err) {
+      status.textContent = lang === 'pt' ? 'Erro de conexão. Tente novamente ou use o e-mail acima.' : 'Connection error. Try again or use the email above.';
+      status.classList.add('error');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = originalBtnText;
+    }
+  });
+}
+
+/* ─── SMOOTH SCROLL ─── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+</body>
+</html>
